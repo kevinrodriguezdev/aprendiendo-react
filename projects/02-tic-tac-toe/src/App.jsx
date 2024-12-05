@@ -5,9 +5,16 @@ import confetti from "canvas-confetti"
 
 //Turnos
 const TURNS = {
-  X: "✖️",
-  O: "⭕",
+  X: "X",
+  O: "O",
 };
+//Partidas ganadas
+
+const WINS = {
+
+  X: 0, 
+  O: 0
+}
 
 //Combinaciones ganadoras
 const WINNER_COMBOS = [
@@ -77,6 +84,12 @@ function App() {
     if (newWinner) {
       confetti()
       setWinner(newWinner);
+ 
+      if (newWinner === TURNS.X) {
+        WINS.X += 1        
+      }else{
+        WINS.O += 1
+      }
 
     } else if (checkEndGame(newBoard)) {
       setWinner(false);
@@ -84,7 +97,9 @@ function App() {
   };
 
   return (
+    
     <main className="board">
+
       <h1>Tic Tac toe</h1>
       <button onClick={resetGame}>Reiniciar</button>
       <section className="game">
@@ -116,7 +131,16 @@ function App() {
           </div>
         </section>
       )}
+
+      <section className="history">
+        <div className="jugadores">
+          <span className="">Ganadas por X:  {WINS.X}</span>
+          <span>Ganadas por O:  {WINS.O}</span>
+        </div>
+      </section>
+      
     </main>
+    
   );
 }
 

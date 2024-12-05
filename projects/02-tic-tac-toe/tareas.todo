@@ -1,5 +1,6 @@
 Project 1:
-    [] Añadir un contador de cuantas veces han empatado o ganado
+    [x] Añadir un contador de cuantas veces han empatado o ganado
+    [] Instalar tailwindcss
     [] Arreglar css y añadir un fondo más bonito
     [] Componetizar la logica y componentes.
     
