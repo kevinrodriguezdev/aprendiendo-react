@@ -5,7 +5,7 @@ function App() {
   const [enabled, setEnabled] = useState(false);
   //estado para la posicion del ratón
   const [position, setPosition] = useState({ x: 0, y: 0 });
-
+//pointer move
   useEffect(() => {
     const handleMove = (event) => {
       const { clientX, clientY } = event;
@@ -21,7 +21,13 @@ function App() {
       window.removeEventListener('pointermove', handleMove)
     }
   }, [enabled]);
-
+//change body classname
+useEffect(()=>{
+  document.body.classList.toggle('no-cursor', enabled)
+  return () =>{
+    document.body.classList.remove('no-cursor')
+  }
+}, [enabled])
   return (
     <main>
       <div
